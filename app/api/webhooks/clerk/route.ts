@@ -174,6 +174,7 @@ export async function POST(req: Request) {
   if (evt.type === "user.created") {
     const { id, email_addresses, image_url, first_name, last_name, username } =
       evt.data;
+    console.log(evt.data);
 
     const user = {
       clerkId: evt.data.id,
@@ -185,7 +186,6 @@ export async function POST(req: Request) {
     };
 
     const newUser = await createUser(user);
-    return NextResponse.json({ message: "OK", user: newUser });
   }
   const eventType = evt.type;
   console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
