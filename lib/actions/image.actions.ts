@@ -20,20 +20,19 @@ const populateUser = (query: any) =>
 export async function addImage({ image, userId, path }: AddImageParams) {
   try {
     await connectToDatabase();
-
     const author = await User.findById(userId);
+    console.log(author);
 
     if (!author) {
       throw new Error("User not found");
     }
-
     const newImage = await Image.create({
       ...image,
       author: author._id,
     });
+    console.log(newImage);
 
     revalidatePath(path);
-
     return JSON.parse(JSON.stringify(newImage));
   } catch (error) {
     handleError(error);

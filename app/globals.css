@@ -80,7 +80,7 @@
 }
 
 .root {
-  @apply flex min-h-screen w-full flex-col bg-[#1C1E2C] lg:flex-row;
+  @apply flex min-h-screen w-full flex-col bg-[#000000] lg:flex-row;
 }
 
 .root-container {
@@ -312,7 +312,7 @@
 
   /* Sidebar Component */
   .sidebar {
-    @apply hidden h-screen w-72 bg-[#1C1E2C] p-5 shadow-md shadow-purple-200/50 lg:flex;
+    @apply hidden h-screen w-72 bg-[#000000] p-5 shadow-md shadow-purple-200/50 lg:flex;
   }
 
   .sidebar-logo {

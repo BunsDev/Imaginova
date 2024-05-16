@@ -20,7 +20,8 @@
     "@stripe/stripe-js": "^2.4.0",
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^2.0.1",
-    "clsx": "^2.1.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.2.2",
     "lucide-react": "^0.323.0",
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.1",
@@ -32,7 +33,7 @@
     "react-hook-form": "^7.50.1",
     "stripe": "^14.16.0",
     "svix": "^1.17.0",
-    "tailwind-merge": "^2.2.1",
+    "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"
   },
