@@ -7,12 +7,12 @@ export const navLinks = [
   {
     label: "Image Restore",
     route: "/transformations/add/restore",
-    icon: "/assets/icons/image.svg",
+    icon: "/assets/icons/photo-scan.svg",
   },
   {
     label: "Generative Fill",
     route: "/transformations/add/fill",
-    icon: "/assets/icons/stars.svg",
+    icon: "/assets/icons/wand.svg",
   },
   {
     label: "Object Remove",
@@ -22,7 +22,7 @@ export const navLinks = [
   {
     label: "Object Recolor",
     route: "/transformations/add/recolor",
-    icon: "/assets/icons/filter.svg",
+    icon: "/assets/icons/replace.svg",
   },
   {
     label: "Background Remove",

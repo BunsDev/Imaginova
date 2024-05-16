@@ -39,15 +39,15 @@ const Home = async ({ searchParams }: SearchParamProps) => {
           </p>
         </div>
 
-        <ul className="flex-center w-full mt-5 gap-20">
+        <ul className="flex-center w-full mt-10 gap-20">
           {navLinks.slice(1, 5).map((link) => (
             <Link
               key={link.route}
               href={link.route}
               className="flex-center flex-col gap-2"
             >
-              <li className="flex-center w-fit rounded-full bg-white p-4">
-                <Image src={link.icon} alt="image" width={24} height={24} />
+              <li className="flex-center w-fit rounded-lg ring-2 ring-white p-4">
+                <Image src={link.icon} alt="image" width={38} height={32} />
               </li>
               <p className="p-14-medium text-center text-white">{link.label}</p>
             </Link>
