@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 import "./globals.css";
 
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <ClerkProvider
       appearance={{
-        variables: { colorPrimary: "#624cf5" },
+        baseTheme: dark,
       }}
     >
       <html lang="en">
