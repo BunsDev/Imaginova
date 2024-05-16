@@ -11,7 +11,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
   const images = await getAllImages({ page, searchQuery });
 
   return (
-    <>
+    <div className="">
       <section className="home">
         <h1 className="home-heading">
           Unleash Your Creative Vision with Imaginify
@@ -40,7 +40,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
           page={page}
         />
       </section>
-    </>
+    </div>
   );
 };
 
