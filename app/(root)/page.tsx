@@ -39,8 +39,9 @@ const Home = async ({ searchParams }: SearchParamProps) => {
           </p>
         </div>
 
-        <ul className="flex-center w-full mt-10 gap-20">
+        <ul className="grid grid-cols-4 w-full mt-10 gap-20">
           {navLinks.slice(1, 5).map((link) => (
+            // {navLinks.map((link) => (
             <Link
               key={link.route}
               href={link.route}

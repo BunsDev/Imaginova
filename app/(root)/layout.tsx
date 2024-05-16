@@ -1,10 +1,12 @@
 import MobileNav from "@/components/shared/MobileNav";
 import Sidebar from "@/components/shared/Sidebar";
 import { Toaster } from "@/components/ui/toaster";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="root">
+    <main className={`${inter.className} root`}>
       <Sidebar />
       <MobileNav />
 

@@ -32,7 +32,7 @@
 
 ## 🚨 Tutorial
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>. 
+This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
 
 If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
 
@@ -40,7 +40,7 @@ If you prefer visual learning, this is the perfect resource for you. Follow our 
 
 ## <a name="introduction">🤖 Introduction</a>
 
-Build an AI image SaaS platform that excels in image processing capabilities, integrates a secure payment infrastructure, offers advanced image search functionalities, and supports multiple AI features, including image restoration, recoloring, object removal, generative filling, and background removal. This project can be a guide for your next AI image tool and a boost to your portfolio. 
+Build an AI image SaaS platform that excels in image processing capabilities, integrates a secure payment infrastructure, offers advanced image search functionalities, and supports multiple AI features, including image restoration, recoloring, object removal, generative filling, and background removal. This project can be a guide for your next AI image tool and a boost to your portfolio.
 
 If you're getting started and need assistance or face any bugs, join our active Discord community with over 27k+ members. It's a place where people help each other out.
 
@@ -89,8 +89,7 @@ If you're getting started and need assistance or face any bugs, join our active 
 
 👉 **Responsive UI/UX**: A seamless experience across devices with a user-friendly interface
 
-
-and many more, including code architecture and reusability 
+and many more, including code architecture and reusability
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
@@ -350,7 +349,7 @@ module.exports = {
 }
 
 .auth {
-  @apply flex-center min-h-screen w-full bg-purple-100
+  @apply flex-center min-h-screen w-full bg-purple-100;
 }
 
 .root {
@@ -358,7 +357,7 @@ module.exports = {
 }
 
 .root-container {
-  @apply mt-16 flex-1 overflow-auto py-8 lg:mt-0 lg:max-h-screen lg:py-10
+  @apply mt-16 flex-1 overflow-auto py-8 lg:mt-0 lg:max-h-screen lg:py-10;
 }
 
 /* ========================================== TAILWIND STYLES */
@@ -453,11 +452,11 @@ module.exports = {
   }
 
   .input-field {
-    @apply rounded-[16px] border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 text-dark-600 disabled:opacity-100 p-16-semibold h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important;
+    @apply rounded-[16px] border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 text-white disabled:opacity-100 p-16-semibold h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important;
   }
 
   .search-field {
-    @apply border-0 bg-transparent text-dark-600 w-full placeholder:text-dark-400 h-[50px] p-16-medium focus-visible:ring-offset-0 p-3 focus-visible:ring-transparent !important;
+    @apply border-0 bg-transparent text-white w-full placeholder:text-dark-400 h-[50px] p-16-medium focus-visible:ring-offset-0 p-3 focus-visible:ring-transparent !important;
   }
 
   .submit-button {
@@ -465,7 +464,7 @@ module.exports = {
   }
 
   .select-field {
-    @apply w-full border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 rounded-[16px] h-[50px] md:h-[54px] text-dark-600 p-16-semibold disabled:opacity-100 placeholder:text-dark-400/50 px-4 py-3 focus:ring-offset-0 focus-visible:ring-transparent focus:ring-transparent focus-visible:ring-0 focus-visible:outline-none !important;
+    @apply w-full border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 rounded-[16px] h-[50px] md:h-[54px] text-white p-16-semibold disabled:opacity-100 placeholder:text-dark-400/50 px-4 py-3 focus:ring-offset-0 focus-visible:ring-transparent focus:ring-transparent focus-visible:ring-0 focus-visible:outline-none !important;
   }
 
   .select-trigger {
@@ -934,7 +933,8 @@ const TransactionSchema = new Schema({
   },
 });
 
-const Transaction = models?.Transaction || model("Transaction", TransactionSchema);
+const Transaction =
+  models?.Transaction || model("Transaction", TransactionSchema);
 
 export default Transaction;
 ```
@@ -991,7 +991,7 @@ export const InsufficientCreditsModal = () => {
             height={122}
           />
 
-          <AlertDialogTitle className="p-24-bold text-dark-600">
+          <AlertDialogTitle className="p-24-bold text-white">
             Oops.... Looks like you&#39;ve run out of free credits!
           </AlertDialogTitle>
 
@@ -1072,7 +1072,7 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
     });
 
     if (!updatedUser) throw new Error("User update failed");
-    
+
     return JSON.parse(JSON.stringify(updatedUser));
   } catch (error) {
     handleError(error);
@@ -1108,11 +1108,11 @@ export async function updateCredits(userId: string, creditFee: number) {
 
     const updatedUserCredits = await User.findOneAndUpdate(
       { _id: userId },
-      { $inc: { creditBalance: creditFee }},
+      { $inc: { creditBalance: creditFee } },
       { new: true }
-    )
+    );
 
-    if(!updatedUserCredits) throw new Error("User credits update failed");
+    if (!updatedUserCredits) throw new Error("User credits update failed");
 
     return JSON.parse(JSON.stringify(updatedUserCredits));
   } catch (error) {
@@ -1261,7 +1261,7 @@ export const download = (url: string, filename: string) => {
 
 // DEEP MERGE OBJECTS
 export const deepMergeObjects = (obj1: any, obj2: any) => {
-  if(obj2 === null || obj2 === undefined) {
+  if (obj2 === null || obj2 === undefined) {
     return obj1;
   }
 
@@ -1499,7 +1499,8 @@ export async function POST(req: Request) {
 
   // CREATE
   if (eventType === "user.created") {
-    const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
+    const { id, email_addresses, image_url, first_name, last_name, username } =
+      evt.data;
 
     const user = {
       clerkId: id,
@@ -1664,7 +1665,7 @@ export const Collection = ({
   return (
     <>
       <div className="collection-heading">
-        <h2 className="h2-bold text-dark-600">Recent Edits</h2>
+        <h2 className="h2-bold text-white">Recent Edits</h2>
         {hasSearch && <Search />}
       </div>
 
@@ -1724,7 +1725,7 @@ const Card = ({ image }: { image: IImage }) => {
           sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
         />
         <div className="flex-between">
-          <p className="p-20-semibold mr-3 line-clamp-1 text-dark-600">
+          <p className="p-20-semibold mr-3 line-clamp-1 text-white">
             {image.title}
           </p>
           <Image
@@ -1821,13 +1822,14 @@ import User from "../database/models/user.model";
 import Image from "../database/models/image.model";
 import { redirect } from "next/navigation";
 
-import { v2 as cloudinary } from 'cloudinary'
+import { v2 as cloudinary } from "cloudinary";
 
-const populateUser = (query: any) => query.populate({
-  path: 'author',
-  model: User,
-  select: '_id firstName lastName clerkId'
-})
+const populateUser = (query: any) =>
+  query.populate({
+    path: "author",
+    model: User,
+    select: "_id firstName lastName clerkId",
+  });
 
 // ADD IMAGE
 export async function addImage({ image, userId, path }: AddImageParams) {
@@ -1843,13 +1845,13 @@ export async function addImage({ image, userId, path }: AddImageParams) {
     const newImage = await Image.create({
       ...image,
       author: author._id,
-    })
+    });
 
     revalidatePath(path);
 
     return JSON.parse(JSON.stringify(newImage));
   } catch (error) {
-    handleError(error)
+    handleError(error);
   }
 }
 
@@ -1868,13 +1870,13 @@ export async function updateImage({ image, userId, path }: UpdateImageParams) {
       imageToUpdate._id,
       image,
       { new: true }
-    )
+    );
 
     revalidatePath(path);
 
     return JSON.parse(JSON.stringify(updatedImage));
   } catch (error) {
-    handleError(error)
+    handleError(error);
   }
 }
 
@@ -1885,9 +1887,9 @@ export async function deleteImage(imageId: string) {
 
     await Image.findByIdAndDelete(imageId);
   } catch (error) {
-    handleError(error)
-  } finally{
-    redirect('/')
+    handleError(error);
+  } finally {
+    redirect("/");
   }
 }
 
@@ -1898,16 +1900,20 @@ export async function getImageById(imageId: string) {
 
     const image = await populateUser(Image.findById(imageId));
 
-    if(!image) throw new Error("Image not found");
+    if (!image) throw new Error("Image not found");
 
     return JSON.parse(JSON.stringify(image));
   } catch (error) {
-    handleError(error)
+    handleError(error);
   }
 }
 
 // GET IMAGES
-export async function getAllImages({ limit = 9, page = 1, searchQuery = '' }: {
+export async function getAllImages({
+  limit = 9,
+  page = 1,
+  searchQuery = "",
+}: {
   limit?: number;
   page: number;
   searchQuery?: string;
@@ -1920,12 +1926,12 @@ export async function getAllImages({ limit = 9, page = 1, searchQuery = '' }: {
       api_key: process.env.CLOUDINARY_API_KEY,
       api_secret: process.env.CLOUDINARY_API_SECRET,
       secure: true,
-    })
+    });
 
-    let expression = 'folder=imaginify';
+    let expression = "folder=imaginify";
 
     if (searchQuery) {
-      expression += ` AND ${searchQuery}`
+      expression += ` AND ${searchQuery}`;
     }
 
     const { resources } = await cloudinary.search
@@ -1936,21 +1942,21 @@ export async function getAllImages({ limit = 9, page = 1, searchQuery = '' }: {
 
     let query = {};
 
-    if(searchQuery) {
+    if (searchQuery) {
       query = {
         publicId: {
-          $in: resourceIds
-        }
-      }
+          $in: resourceIds,
+        },
+      };
     }
 
-    const skipAmount = (Number(page) -1) * limit;
+    const skipAmount = (Number(page) - 1) * limit;
 
     const images = await populateUser(Image.find(query))
       .sort({ updatedAt: -1 })
       .skip(skipAmount)
       .limit(limit);
-    
+
     const totalImages = await Image.find(query).countDocuments();
     const savedImages = await Image.find().countDocuments();
 
@@ -1958,9 +1964,9 @@ export async function getAllImages({ limit = 9, page = 1, searchQuery = '' }: {
       data: JSON.parse(JSON.stringify(images)),
       totalPage: Math.ceil(totalImages / limit),
       savedImages,
-    }
+    };
   } catch (error) {
-    handleError(error)
+    handleError(error);
   }
 }
 
@@ -2024,7 +2030,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
 
       <section className="mt-5 flex flex-wrap gap-4">
         <div className="p-14-medium md:p-16-medium flex gap-2">
-          <p className="text-dark-600">Transformation:</p>
+          <p className="text-white">Transformation:</p>
           <p className=" capitalize text-purple-400">
             {image.transformationType}
           </p>
@@ -2034,7 +2040,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
           <>
             <p className="hidden text-dark-400/50 md:block">&#x25CF;</p>
             <div className="p-14-medium md:p-16-medium flex gap-2 ">
-              <p className="text-dark-600">Prompt:</p>
+              <p className="text-white">Prompt:</p>
               <p className=" capitalize text-purple-400">{image.prompt}</p>
             </div>
           </>
@@ -2044,7 +2050,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
           <>
             <p className="hidden text-dark-400/50 md:block">&#x25CF;</p>
             <div className="p-14-medium md:p-16-medium flex gap-2">
-              <p className="text-dark-600">Color:</p>
+              <p className="text-white">Color:</p>
               <p className=" capitalize text-purple-400">{image.color}</p>
             </div>
           </>
@@ -2054,7 +2060,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
           <>
             <p className="hidden text-dark-400/50 md:block">&#x25CF;</p>
             <div className="p-14-medium md:p-16-medium flex gap-2">
-              <p className="text-dark-600">Aspect Ratio:</p>
+              <p className="text-white">Aspect Ratio:</p>
               <p className=" capitalize text-purple-400">{image.aspectRatio}</p>
             </div>
           </>
@@ -2065,7 +2071,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
         <div className="transformation-grid">
           {/* MEDIA UPLOADER */}
           <div className="flex flex-col gap-4">
-            <h3 className="h3-bold text-dark-600">Original</h3>
+            <h3 className="h3-bold text-white">Original</h3>
 
             <Image
               width={getImageSize(image.transformationType, image, "width")}
@@ -2264,7 +2270,7 @@ export async function POST(request: Request) {
     };
 
     const newTransaction = await createTransaction(transaction);
-    
+
     return NextResponse.json({ message: "OK", transaction: newTransaction });
   }
 
@@ -2311,7 +2317,7 @@ const Credits = async () => {
                 <p className="p-20-semibold mt-2 text-purple-500">
                   {plan.name}
                 </p>
-                <p className="h1-semibold text-dark-600">${plan.price}</p>
+                <p className="h1-semibold text-white">${plan.price}</p>
                 <p className="p-16-regular">{plan.credits} Credits</p>
               </div>
 
@@ -2483,7 +2489,7 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
               height={50}
               className="size-9 md:size-12"
             />
-            <h2 className="h2-bold text-dark-600">{user.creditBalance}</h2>
+            <h2 className="h2-bold text-white">{user.creditBalance}</h2>
           </div>
         </div>
 
@@ -2497,7 +2503,7 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
               height={50}
               className="size-9 md:size-12"
             />
-            <h2 className="h2-bold text-dark-600">{images?.data.length}</h2>
+            <h2 className="h2-bold text-white">{images?.data.length}</h2>
           </div>
         </div>
       </section>
@@ -2517,7 +2523,6 @@ export default Profile;
 ```
 
 </details>
-
 
 ## <a name="links">🔗 Links</a>
 

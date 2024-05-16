@@ -27,17 +27,17 @@ export const navLinks = [
   {
     label: "Background Remove",
     route: "/transformations/add/removeBackground",
-    icon: "/assets/icons/camera.svg",
+    icon: "/assets/icons/photo-sensor-3.svg",
   },
   {
     label: "Profile",
     route: "/profile",
-    icon: "/assets/icons/profile.svg",
+    icon: "/assets/icons/user.svg",
   },
   {
     label: "Buy Credits",
     route: "/credits",
-    icon: "/assets/icons/bag.svg",
+    icon: "/assets/icons/coins_.svg",
   },
 ];
 

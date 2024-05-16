@@ -44,7 +44,7 @@ export const InsufficientCreditsModal = () => {
             height={122}
           />
 
-          <AlertDialogTitle className="p-24-bold text-dark-600">
+          <AlertDialogTitle className="p-24-bold text-white">
             Oops.... Looks like you&#39;ve run out of free credits!
           </AlertDialogTitle>
 
