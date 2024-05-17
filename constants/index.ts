@@ -5,39 +5,40 @@ export const navLinks = [
     icon: "/assets/icons/home.svg",
   },
   {
-    label: "Image Restore",
-    route: "/transformations/add/restore",
-    icon: "/assets/icons/photo-scan.svg",
-  },
-  {
     label: "Generative Fill",
     route: "/transformations/add/fill",
     icon: "/assets/icons/wand.svg",
   },
   {
-    label: "Object Remove",
+    label: "Remove Object",
     route: "/transformations/add/remove",
     icon: "/assets/icons/scan.svg",
   },
   {
-    label: "Object Recolor",
+    label: "Restore Image",
+    route: "/transformations/add/restore",
+    icon: "/assets/icons/photo-scan.svg",
+  },
+
+  {
+    label: "Recolor Object ",
     route: "/transformations/add/recolor",
     icon: "/assets/icons/replace.svg",
   },
   {
-    label: "Background Remove",
+    label: "Remove Background",
     route: "/transformations/add/removeBackground",
     icon: "/assets/icons/photo-sensor-3.svg",
-  },
-  {
-    label: "Profile",
-    route: "/profile",
-    icon: "/assets/icons/user.svg",
   },
   {
     label: "Buy Credits",
     route: "/credits",
     icon: "/assets/icons/coins_.svg",
+  },
+  {
+    label: "Profile",
+    route: "/profile",
+    icon: "/assets/icons/user.svg",
   },
 ];
 
@@ -50,19 +51,19 @@ export const plans = [
     credits: 20,
     inclusions: [
       {
-        label: "20 Free Credits",
+        label: "Enjoy 10 Credits",
         isIncluded: true,
       },
       {
-        label: "Basic Access to Services",
+        label: "Access Essentials",
         isIncluded: true,
       },
       {
-        label: "Priority Customer Support",
+        label: "Receive Priority Support",
         isIncluded: false,
       },
       {
-        label: "Priority Updates",
+        label: "Stay First in Line for Updates",
         isIncluded: false,
       },
     ],
@@ -75,19 +76,19 @@ export const plans = [
     credits: 120,
     inclusions: [
       {
-        label: "120 Credits",
+        label: "20 Credits",
         isIncluded: true,
       },
       {
-        label: "Full Access to Services",
+        label: "Access Essentials",
         isIncluded: true,
       },
       {
-        label: "Priority Customer Support",
+        label: "Receive Priority Support",
         isIncluded: true,
       },
       {
-        label: "Priority Updates",
+        label: "Stay First in Line for Updates",
         isIncluded: false,
       },
     ],
@@ -100,19 +101,19 @@ export const plans = [
     credits: 2000,
     inclusions: [
       {
-        label: "2000 Credits",
+        label: "100 Credits",
         isIncluded: true,
       },
       {
-        label: "Full Access to Services",
+        label: "Access Essentials",
         isIncluded: true,
       },
       {
-        label: "Priority Customer Support",
+        label: "Receive Priority Support",
         isIncluded: true,
       },
       {
-        label: "Priority Updates",
+        label: "Stay First in Line for Updates",
         isIncluded: true,
       },
     ],
