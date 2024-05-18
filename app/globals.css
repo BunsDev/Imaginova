@@ -253,7 +253,7 @@
     @apply w-full rounded-[16px] border-2 border-purple-200/20 bg-black p-5 shadow-lg shadow-purple-200/10 md:px-6 md:py-8;
   }
 
-  /* Transformation Details */
+  /* Transformation  */
   .transformation-grid {
     @apply grid h-fit min-h-[200px] grid-cols-1 gap-5 py-8 md:grid-cols-2;
   }
