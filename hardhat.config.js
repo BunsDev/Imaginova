@@ -30,6 +30,10 @@ module.exports = {
       url: "https://polygon-mumbai.g.alchemy.com/v2/2bGIFu-iEnl9RvAOTe1ddZI2gBnuYQGS",
       accounts: [privateKey],
     },
+    Avax: {
+      url: " https://api.avax-test.network/ext/bc/C/rpc",
+      accounts: [privateKey],
+    },
   },
   solidity: "0.8.24",
   allowUnlimitedContractSize: true,
