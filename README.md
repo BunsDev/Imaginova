@@ -74,7 +74,7 @@ This project is licensed under the MIT License - see the `LICENSE` file for deta
 
 ### Connect with Us!
 
-- [Project Homepage](https://github.com/imaginova/imaginova)
+- [Project Link](https://github.com/imaginova/imaginova)
 - [Watch Our Video](https://www.youtube.com/watch?v=example)
-- [White Paper](https://drive.google.com/file/d/1BMm_8Mb6ZWAiWKO6FSPnLqltHzRREdlX/view?usp=sharing)
+- [Documentation](https://docs.google.com/document/d/1DhwU1uueHxGsJMSQTnqra9Hzng1y0FFe/edit?usp=sharing&ouid=111168265895877782203&rtpof=true&sd=true)
 - [Report Issues or Request Features](https://github.com/imaginova/imaginova/issues)
