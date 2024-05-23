@@ -1,5 +1,9 @@
 # Imaginova: Blockchain & AI based Creative Platform for Image Manipulation
 
+<a href="" title="Imaginova Platform">
+    <img src="./public/land.jpg" width="" alt="Imaginova Platform"/>
+</a>
+
 ### Introduction 🚀
 
 Imaginova is an innovative blockchain-based platform designed to revolutionize how users interact with and manipulate digital images. It offers tools for modifying, recoloring, and generatively filling images, all while ensuring the security and integrity of these actions through blockchain technology. Imaginova leverages Chainlink Functions to integrate with off-chain AI modules, bringing the results back on-chain, and stores images on IPFS for decentralized and secure storage.
