@@ -30,8 +30,10 @@ module.exports = {
       url: "https://polygon-mumbai.g.alchemy.com/v2/2bGIFu-iEnl9RvAOTe1ddZI2gBnuYQGS",
       accounts: [privateKey],
     },
-    Avax: {
-      url: " https://api.avax-test.network/ext/bc/C/rpc",
+    fuji: {
+      url: "https://api.avax-test.network/ext/bc/C/rpc",
+      gasPrice: 225000000000,
+      chainId: 43113,
       accounts: [privateKey],
     },
   },

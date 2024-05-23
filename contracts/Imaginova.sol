@@ -1,13 +1,127 @@
 // SPDX-License-Identifier: MIT
+// pragma solidity ^0.8.0;
+
+// import {FunctionsClient} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/FunctionsClient.sol";
+// import {ConfirmedOwner} from "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol";
+// import {FunctionsRequest} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/libraries/FunctionsRequest.sol";
+
+// /**
+//  * Request testnet LINK and ETH here: https://faucets.chain.link/
+//  * Find information on LINK Token Contracts and get the latest ETH and LINK faucets here: https://docs.chain.link/resources/link-token-contracts/
+//  */
+
+// /**
+//  * @title GettingStartedFunctionsConsumer
+//  * @notice This is an example contract to show how to make HTTP requests using Chainlink
+//  * @dev This contract uses hardcoded values and should not be used in production.
+//  */
+// contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
+//     using FunctionsRequest for FunctionsRequest.Request;
+
+//     // State variables to store the last request ID, response, and error
+//     bytes32 public s_lastRequestId;
+//     bytes public s_lastResponse;
+//     bytes public s_lastError;
+
+//     // Custom error type
+//     error UnexpectedRequestID(bytes32 requestId);
+
+//     // Event to log responses
+//     event Response(
+//         bytes32 indexed requestId,
+//         string character,
+//         bytes response,
+//         bytes err
+//     );
+
+//     // Router address - Hardcoded for Sepolia
+//     // Check to get the router address for your supported network https://docs.chain.link/chainlink-functions/supported-networks
+//     address router = 0xA9d587a00A31A52Ed70D6026794a8FC5E2F5dCb0;
+
+//     // JavaScript source code
+//     // Fetch character name from the Star Wars API.
+//     // Documentation: https://swapi.info/people
+//     string source =
+//         "const characterId = args[0];"
+//         "const apiResponse = await Functions.makeHttpRequest({"
+//         "url: `https://swapi.info/api/people/${characterId}/`"
+//         "});"
+//         "if (apiResponse.error) {"
+//         "throw Error('Request failed');"
+//         "}"
+//         "const { data } = apiResponse;"
+//         "return Functions.encodeString(data.name);";
+
+//     //Callback gas limit
+//     uint32 gasLimit = 300000;
+
+//     // donID - Hardcoded for Sepolia
+//     // Check to get the donID for your supported network https://docs.chain.link/chainlink-functions/supported-networks
+//     bytes32 donID =
+//         0x66756e2d657468657265756d2d7365706f6c69612d3100000000000000000000;
+
+//     // State variable to store the returned character information
+//     string public character;
+
+//     /**
+//      * @notice Initializes the contract with the Chainlink router address and sets the contract owner
+//      */
+//     constructor() FunctionsClient(router) ConfirmedOwner(msg.sender) {}
+
+//     /**
+//      * @notice Sends an HTTP request for character information
+//      * @param subscriptionId The ID for the Chainlink subscription
+//      * @param args The arguments to pass to the HTTP request
+//      * @return requestId The ID of the request
+//      */
+//     function sendRequest(
+//         uint64 subscriptionId,
+//         string[] calldata args
+//     ) external onlyOwner returns (bytes32 requestId) {
+//         FunctionsRequest.Request memory req;
+//         req.initializeRequestForInlineJavaScript(source); // Initialize the request with JS code
+//         if (args.length > 0) req.setArgs(args); // Set the arguments for the request
+
+//         // Send the request and store the request ID
+//         s_lastRequestId = _sendRequest(
+//             req.encodeCBOR(),
+//             subscriptionId,
+//             gasLimit,
+//             donID
+//         );
+
+//         return s_lastRequestId;
+//     }
+
+//     /**
+//      * @notice Callback function for fulfilling a request
+//      * @param requestId The ID of the request to fulfill
+//      * @param response The HTTP response data
+//      * @param err Any errors from the Functions request
+//      */
+//     function fulfillRequest(
+//         bytes32 requestId,
+//         bytes memory response,
+//         bytes memory err
+//     ) internal override {
+//         if (s_lastRequestId != requestId) {
+//             revert UnexpectedRequestID(requestId); // Check if request IDs match
+//         }
+//         // Update the contract's state variables with the response and any errors
+//         s_lastResponse = response;
+//         character = string(response);
+//         s_lastError = err;
+
+//         // Emit an event to log the response
+//         emit Response(requestId, character, s_lastResponse, s_lastError);
+//     }
+// }
+
+
 pragma solidity ^0.8.0;
 
-import {FunctionsClient} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/FunctionsClient.sol";
-import {ConfirmedOwner} from "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol";
-import {FunctionsRequest} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/libraries/FunctionsRequest.sol";
-import "./Batch.sol";
-
-contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
-    using FunctionsRequest for FunctionsRequest.Request;
+contract ImaginovaPayment {
+    address public owner;
 
     enum Package { Free, Pro, Premium }
     struct PackageInfo {
@@ -15,34 +129,21 @@ contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
         uint credits;
     }
 
-    Batch internal batchContract;
-
     mapping(Package => PackageInfo) public packages;
     mapping(address => uint) public userCredits;
 
-    // Chainlink Functions parameters
-    address private router;
-    bytes32 private donID;
-    uint256 private fee;
-    string public aiResponse;
-    uint32 private gasLimit = 300000;
-
     event Purchase(address indexed buyer, Package package, uint credits);
-    event RequestFulfilled(bytes32 indexed requestId, string response);
 
-    constructor(
-        address _router,
-        bytes32 _donID,
-        uint256 _fee
-    ) FunctionsClient(_router) ConfirmedOwner(msg.sender) {
-        router = _router;
-        donID = _donID;
-        fee = _fee;
-
+    constructor() {
+        owner = msg.sender;
         packages[Package.Free] = PackageInfo({ price: 0, credits: 20 });
         packages[Package.Pro] = PackageInfo({ price: 0.01 ether, credits: 120 });
         packages[Package.Premium] = PackageInfo({ price: 0.05 ether, credits: 2000 });
-        batchContract = Batch(0x0000000000000000000000000000000000000808);
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner can perform this action");
+        _;
     }
 
     function purchase(Package packageType) external payable {
@@ -63,56 +164,10 @@ contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
     }
 
     function withdraw() external onlyOwner {
-        payable(owner()).transfer(address(this).balance);
+        payable(owner).transfer(address(this).balance);
     }
 
     function getCredits(address user) external view returns (uint) {
         return userCredits[user];
-    }
-
-    // Chainlink Functions to connect to OpenAI API
-    function requestAIResponse(string memory prompt) public onlyOwner {
-        FunctionsRequest.Request memory req;
-        req.initializeRequestForInlineJavaScript(
-            string(abi.encodePacked(
-                "const prompt = args[0];",
-                "const apiResponse = await Functions.makeHttpRequest({",
-                "url: `https://api.openai.com/v1/engines/davinci/completions`,",
-                "method: `POST`,",
-                "headers: {",
-                "`Authorization`: `Bearer YOUR_OPENAI_API_KEY`,",
-                "`Content-Type`: `application/json`",
-                "},",
-                "data: JSON.stringify({",
-                "`prompt`: prompt,",
-                "`max_tokens`: 100",
-                "})",
-                "});",
-                "if (apiResponse.error) {",
-                "throw Error('Request failed');",
-                "}",
-                "const { data } = apiResponse;",
-                "return Functions.encodeString(data.choices[0].text);"
-            ))
-        );
-        string[] memory args = new string[](1);
-        args[0] = prompt;
-        req.setArgs(args);
-
-        _sendRequest(
-            req.encodeCBOR(),
-            uint64(fee),
-            gasLimit,
-            donID
-        );
-    }
-
-    function fulfillRequest(bytes32 _requestId, bytes memory _response, bytes memory _err) internal override {
-        if (_err.length > 0) {
-            aiResponse = string(_err); // In case of error, store the error message
-        } else {
-            aiResponse = string(_response); // In case of success, store the response
-        }
-        emit RequestFulfilled(_requestId, aiResponse);
     }
 }
