@@ -4,7 +4,6 @@ pragma solidity >=0.8.3;
 /// @dev The Batch contract's address.
 address constant BATCH_ADDRESS = 0x0000000000000000000000000000000000000808;
 
-/// @dev The Batch contract's instance.
 Batch constant BATCH_CONTRACT = Batch(BATCH_ADDRESS);
 
 
