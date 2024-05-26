@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import {FunctionsClient} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/FunctionsClient.sol";
 import {ConfirmedOwner} from "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol";
 import {FunctionsRequest} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/libraries/FunctionsRequest.sol";
-import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
     using FunctionsRequest for FunctionsRequest.Request;
@@ -49,6 +49,12 @@ contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
 
     // State variable to store the returned result
     string public result;
+
+    // Address of the Moonbeam Batch Precompile
+    address constant BATCH_PRECOMPILE = 0x0000000000000000000000000000000000000808;
+
+    // Event to log batch transaction results
+    event BatchTransactionResult(bool success, bytes data);
 
     /**
      * @notice Initializes the contract with the Chainlink router address and sets the contract owner
@@ -118,5 +124,30 @@ contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
             /*uint80 answeredInRound*/
         ) = priceFeed.latestRoundData();
         return price;
+    }
+
+    /**
+     * @notice Batch multiple transactions using Moonbeam's batch precompile
+     * @param to The array of addresses to send transactions to
+     * @param value The array of values to send with each transaction
+     * @param callData The array of call data for each transaction
+     * @param gasLimit The array of gas limits for each transaction
+     */
+    function batchTransactions(
+        address[] calldata to,
+        uint256[] calldata value,
+        bytes[] calldata callData,
+        uint64[] calldata gasLimit
+    ) external onlyOwner {
+        (bool success, bytes memory data) = BATCH_PRECOMPILE.call(
+            abi.encodeWithSignature(
+                "batchAll(address[],uint256[],bytes[],uint64[])",
+                to,
+                value,
+                callData,
+                gasLimit
+            )
+        );
+        emit BatchTransactionResult(success, data);
     }
 }
