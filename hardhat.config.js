@@ -8,32 +8,10 @@ module.exports = {
     hardhat: {
       chainId: 4202,
     },
-    sepolia: {
-      url: "https://rpc.sepolia-api.lisk.com",
-      accounts: [privateKey],
-      gasPrice: 1000000000,
-    },
-    BitTorrent: {
-      url: "https://pre-rpc.bt.io/",
-      accounts: [privateKey],
-      gasPrice: 1000000000,
-    },
-    zkEVMCardonaTestnet: {
-      url: "https://polygon-zkevm-cardona.blockpi.network/v1/rpc/public",
-      accounts: [privateKey],
-    },
-    mumbai: {
-      url: "https://rpc-mumbai.maticvigil.com",
-      accounts: [privateKey],
-    },
-    matic: {
-      url: "https://polygon-mumbai.g.alchemy.com/v2/2bGIFu-iEnl9RvAOTe1ddZI2gBnuYQGS",
-      accounts: [privateKey],
-    },
-    fuji: {
-      url: "https://api.avax-test.network/ext/bc/C/rpc",
+    imaginovafuji: {
+      url: "http://127.0.0.1:9650/ext/bc/2r1bPth6o7ogEaJ4uFG9WKCxqggb8Gs5zDD18dTnpzkoGR8Qdv/rpc",
       gasPrice: 225000000000,
-      chainId: 43113,
+      chainId: 1999,
       accounts: [privateKey],
     },
   },
