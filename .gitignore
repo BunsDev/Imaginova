@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/legacySol
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -37,5 +38,8 @@ next-env.d.ts
 
 secrete.txt
 ./secrete.txt
+/legacySol
+./legacySol
 /secrete.txt
 readme.old
+legacySol

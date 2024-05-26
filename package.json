@@ -38,6 +38,7 @@
     "svix": "^1.17.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "thirdweb": "5.24.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
