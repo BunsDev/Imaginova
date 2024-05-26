@@ -54,17 +54,17 @@ const Checkout: React.FC<CheckoutProps> = ({
   const createTransaction = async () => {
     try {
       setIsLoading(true);
-      // let isTnxComplete = await connectAndBuy();
-      // let newTransaction = await updateCredits(buyerId, credits);
-      // toast({
-      //   title: "Credit Purchased!",
-      //   description: "Your credits have been added successfully",
-      //   duration: 5000,
-      //   className: "success-toast",
-      // });
-      // setIsLoading(true);
+      let isTnxComplete = await connectAndBuy();
+      let newTransaction = await updateCredits(buyerId, credits);
+      toast({
+        title: "Credit Purchased!",
+        description: "Your credits have been added successfully",
+        duration: 5000,
+        className: "success-toast",
+      });
+      setIsLoading(false);
 
-      // return JSON.parse(JSON.stringify(newTransaction));
+      return JSON.parse(JSON.stringify(newTransaction));
     } catch (error) {
       setIsLoading(false);
       toast({
