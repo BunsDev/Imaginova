@@ -1,11 +1,11 @@
 import { ethers } from "ethers";
 
-const BitTorrent = {
-  chainId: "0x405", // 1029 in hexadecimal
-  name: "BitTorrent Chain Donau",
-  currency: "BTTC",
-  explorerUrl: "https://testscan.bt.io",
-  rpcUrl: "https://pre-rpc.bt.io/",
+const Avax = {
+  chainId: "43113",
+  name: " Avalanche Fuji C-Chain",
+  currency: "AVAX",
+  explorerUrl: "https://subnets-test.avax.network/c-chain",
+  rpcUrl: " https://api.avax-test.network/ext/bc/C/rpc",
 };
 
 async function connectToNetwork() {
@@ -13,7 +13,7 @@ async function connectToNetwork() {
     try {
       await window.ethereum.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: BitTorrent.chainId }],
+        params: [{ chainId: Avax.chainId }],
       });
     } catch (switchError) {
       // This error code indicates that the chain has not been added to MetaMask.
@@ -23,15 +23,15 @@ async function connectToNetwork() {
             method: "wallet_addEthereumChain",
             params: [
               {
-                chainId: BitTorrent.chainId,
-                chainName: BitTorrent.name,
+                chainId: Avax.chainId,
+                chainName: Avax.name,
                 nativeCurrency: {
-                  name: BitTorrent.currency,
-                  symbol: BitTorrent.currency,
+                  name: Avax.currency,
+                  symbol: Avax.currency,
                   decimals: 18,
                 },
-                rpcUrls: [BitTorrent.rpcUrl],
-                blockExplorerUrls: [BitTorrent.explorerUrl],
+                rpcUrls: [Avax.rpcUrl],
+                blockExplorerUrls: [Avax.explorerUrl],
               },
             ],
           });

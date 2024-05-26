@@ -37,7 +37,7 @@ const Checkout: React.FC<CheckoutProps> = ({
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
 
-    const contractAddress = "0x0e2D26AA3981B3e2e274a7C27697043506F3B372";
+    const contractAddress = "0xaC7d46Cd3ee3b228d3a1C45C720c3ef7330d899A";
     const contractABI = ImaginovaABI.abi;
     const etherAmount = plan === "Pro Package" ? 0.01 : 0.05; // Amount in Ether
     const packageType = plan === "Pro Package" ? 1 : 2;
