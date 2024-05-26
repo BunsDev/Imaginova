@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import {FunctionsClient} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/FunctionsClient.sol";
 import {ConfirmedOwner} from "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol";
 import {FunctionsRequest} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/libraries/FunctionsRequest.sol";
+import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
 contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
     using FunctionsRequest for FunctionsRequest.Request;
@@ -22,6 +23,7 @@ contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
     );
 
     address router = 0xA9d587a00A31A52Ed70D6026794a8FC5E2F5dCb0;
+    AggregatorV3Interface internal priceFeed;
 
     string source = 
         "const openaiApiKey = args[0];"
@@ -51,7 +53,9 @@ contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
     /**
      * @notice Initializes the contract with the Chainlink router address and sets the contract owner
      */
-    constructor() FunctionsClient(router) ConfirmedOwner(msg.sender) {}
+    constructor() FunctionsClient(router) ConfirmedOwner(msg.sender) {
+        priceFeed = AggregatorV3Interface(0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419); // ETH/USD price feed address on Ethereum mainnet
+    }
 
     /**
      * @notice Sends an HTTP request to the OpenAI API
@@ -99,5 +103,20 @@ contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
 
         // Emit an event to log the response
         emit Response(requestId, result, s_lastResponse, s_lastError);
+    }
+
+    /**
+     * @notice Gets the latest ETH/USD price from the Chainlink price feed
+     * @return price The latest price
+     */
+    function getLatestPrice() public view returns (int) {
+        (
+            /*uint80 roundID*/,
+            int price,
+            /*uint startedAt*/,
+            /*uint timeStamp*/,
+            /*uint80 answeredInRound*/
+        ) = priceFeed.latestRoundData();
+        return price;
     }
 }

@@ -2,19 +2,25 @@ import { ethers } from "ethers";
 
 const Avax = {
   chainId: "43113",
-  name: " Avalanche Fuji C-Chain",
+  name: "Avalanche Fuji C-Chain",
   currency: "AVAX",
   explorerUrl: "https://subnets-test.avax.network/c-chain",
-  rpcUrl: " https://api.avax-test.network/ext/bc/C/rpc",
+  rpcUrl: "https://api.avax-test.network/ext/bc/C/rpc",
 };
 
 async function connectToNetwork() {
   if (window.ethereum) {
     try {
-      await window.ethereum.request({
-        method: "wallet_switchEthereumChain",
-        params: [{ chainId: Avax.chainId }],
+      const currentChainId = await window.ethereum.request({
+        method: "eth_chainId",
       });
+
+      if (currentChainId !== Avax.chainId) {
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: Avax.chainId }],
+        });
+      }
     } catch (switchError) {
       // This error code indicates that the chain has not been added to MetaMask.
       if (switchError.code === 4902) {
@@ -56,7 +62,6 @@ async function buyToken(
   packageType,
   signer
 ) {
-  // Ensure user is connected to the correct network
   await connectToNetwork();
 
   const contract = new ethers.Contract(contractAddress, contractABI, signer);
