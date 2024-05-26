@@ -1,32 +1,19 @@
-// SPDX-License-Identifier: MIT
+// // SPDX-License-Identifier: MIT
 // pragma solidity ^0.8.0;
 
 // import {FunctionsClient} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/FunctionsClient.sol";
 // import {ConfirmedOwner} from "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol";
 // import {FunctionsRequest} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/libraries/FunctionsRequest.sol";
 
-// /**
-//  * Request testnet LINK and ETH here: https://faucets.chain.link/
-//  * Find information on LINK Token Contracts and get the latest ETH and LINK faucets here: https://docs.chain.link/resources/link-token-contracts/
-//  */
-
-// /**
-//  * @title GettingStartedFunctionsConsumer
-//  * @notice This is an example contract to show how to make HTTP requests using Chainlink
-//  * @dev This contract uses hardcoded values and should not be used in production.
-//  */
 // contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
 //     using FunctionsRequest for FunctionsRequest.Request;
 
-//     // State variables to store the last request ID, response, and error
 //     bytes32 public s_lastRequestId;
 //     bytes public s_lastResponse;
 //     bytes public s_lastError;
 
-//     // Custom error type
 //     error UnexpectedRequestID(bytes32 requestId);
 
-//     // Event to log responses
 //     event Response(
 //         bytes32 indexed requestId,
 //         string character,
@@ -34,13 +21,10 @@
 //         bytes err
 //     );
 
-//     // Router address - Hardcoded for Sepolia
-//     // Check to get the router address for your supported network https://docs.chain.link/chainlink-functions/supported-networks
+    
 //     address router = 0xA9d587a00A31A52Ed70D6026794a8FC5E2F5dCb0;
 
-//     // JavaScript source code
-//     // Fetch character name from the Star Wars API.
-//     // Documentation: https://swapi.info/people
+
 //     string source =
 //         "const characterId = args[0];"
 //         "const apiResponse = await Functions.makeHttpRequest({"
@@ -118,6 +102,12 @@
 // }
 
 
+
+
+
+
+
+
 pragma solidity ^0.8.0;
 
 contract ImaginovaPayment {
@@ -171,3 +161,9 @@ contract ImaginovaPayment {
         return userCredits[user];
     }
 }
+
+
+
+
+
+
