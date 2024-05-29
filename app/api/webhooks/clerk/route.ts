@@ -94,7 +94,7 @@ export async function POST(req: Request) {
     const user = {
       firstName: first_name,
       lastName: last_name,
-      username: username!,
+      username: "null",
       photo: image_url,
     };
 
