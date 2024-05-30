@@ -51,7 +51,6 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
     handleError(error);
   }
 }
-
 // DELETE
 export async function deleteUser(clerkId: string) {
   try {
