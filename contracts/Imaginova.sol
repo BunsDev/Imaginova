@@ -47,7 +47,6 @@ contract ImaginovaPayment is FunctionsClient, ConfirmedOwner {
     // donID - Hardcoded for Sepolia
     bytes32 donID = 0x66756e2d657468657265756d2d7365706f6c69612d3100000000000000000000;
 
-    // State variable to store the returned result
     string public result;
 
     // Address of the Moonbeam Batch Precompile
