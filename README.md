@@ -132,7 +132,6 @@ To make the Imaginova subnet permissioned, we used precompiles to restrict deplo
 **Token Contract**:
 
 ```solidity
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -253,7 +252,6 @@ To set up Imaginova locally, follow these steps:
 - **Enhanced AI Capabilities**: Integrating more advanced AI models for even better image manipulation and creative options.
 - **Mobile App Development**: Bringing Imaginova's powerful features to mobile devices for on-the-go creativity.
 - **Multi-chain Support**: Expanding support to other blockchain networks to enhance platform resilience and accessibility.
-- **Community-driven Features**: Regular updates based on user feedback and community suggestions to continuously improve the platform.
 
 ### Contributing 🤝
 
