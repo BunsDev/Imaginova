@@ -257,17 +257,7 @@ To set up Imaginova locally, follow these steps:
 
 Contributions are welcome! For major changes, please open an issue first to discuss the proposed changes. We value and appreciate all contributions to improve Imaginova.
 
-### License 📄
-
-This project is licensed under the MIT License - see the `LICENSE` file for details.
-
 ### Acknowledgments 🎉
 
 - Special thanks to the IPFS and Chainlink communities for their pioneering work in decentralized storage and blockchain integration.
 - Gratitude to all contributors and users who help drive the continuous improvement and success of Imaginova.
-
-### Connect with Us!
-
-- [Project Link](https://github.com/imaginova/imaginova)
-- [Watch Our Video](https://www.youtube.com/watch?v=example)
-- [Documentation](https://docs.google.com/document/d/1DhwU1uueHxGsJMSQTnqra9Hzng1y0FFe/edit?usp=sharing&ouid=111168265895877782203&rtpof=true&sd=true)
