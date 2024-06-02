@@ -39,12 +39,13 @@ const MobileNav = () => {
             </SheetTrigger>
             <SheetContent className="sheet-content sm:w-64">
               <>
-                <Image
+                {/* <Image
                   src="/assets/images/logo-text.svg"
                   alt="logo"
                   width={152}
                   height={23}
-                />
+                /> */}
+                <span className="text-black font-bold text-2xl">Imaginova</span>
 
                 <ul className="header-nav_elements">
                   {navLinks.map((link) => {
